@@ -86,29 +86,29 @@ Testbench_Desc_Name: PROCESS
         signal_cin_net <= '0'; 
         signal_signo_net <= '0';
         signal_opera_net <= "01"; 
-        WAIT FOR 1 US; 
+        WAIT FOR 250 NS; 
 
         signal_ai_net <= '1'; 
         signal_bi_net <= '1'; 
         signal_cin_net <= '0';
         signal_signo_net <= '0';
         signal_opera_net <= "01";
-        WAIT FOR 1 US; 
+        WAIT FOR 250 NS; 
 
         
         signal_ai_net <= '0'; 
         signal_bi_net <= '1'; 
         signal_cin_net <= '0';
         signal_signo_net <= '0';
-        signal_opera_net <= "01";
-        WAIT FOR 1 US; 
+        signal_opera_net <= "11";
+        WAIT FOR 250 NS; 
         
         signal_ai_net <= '0'; 
         signal_bi_net <= '0'; 
         signal_cin_net <= '0';
         signal_signo_net <= '0';
-        signal_opera_net <= "01";
-        WAIT FOR 1 US; 
+        signal_opera_net <= "00";
+        WAIT FOR 250 NS;
 
         WAIT;  
     END PROCESS; 

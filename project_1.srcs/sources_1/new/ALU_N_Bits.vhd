@@ -32,13 +32,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity ALU_N_Bits is
-  Port ( 
-    a       : IN std_logic_vector(6 downto 0);
-    b       : IN std_logic_vector(6 downto 0)
-  );
+    Port ( 
+        a       : IN std_logic_vector(1 downto 0);
+        b       : IN std_logic_vector(1 downto 0)
+    );
 end ALU_N_Bits;
 
-architecture Behavioral of ALU_N_Bits is
+architecture Bloque of ALU_N_Bits is
 
     COMPONENT ALU is
         Port ( 
@@ -51,16 +51,29 @@ architecture Behavioral of ALU_N_Bits is
             result      : OUT std_logic
         );
     END COMPONENT; 
-    
-begin
-    Inst_ALU: ALU PORT MAP(
-        ai          => ,
-        bi          => ,
-        cin         => ,
-        signo       => ,
-        opera       => ,
-        cout        => ,
-        result      => 
-    )
 
-end Behavioral;
+    -- TYPE matriz IS ARRAY(0 TO 1, 0 TO 1) OF BIT;
+
+    -- SIGNAL a, b : matriz;                   -- Matrices que contendrán los resultados de los bloques de 1 bit
+    SIGNAL ai           : std_logic_vector(1 DOWNTO 0); -- Vector de m bits para contener los pin de la fila superior
+    SIGNAL bi           : std_logic_vector(1 DOWNTO 0); -- Vector de m bits para contener los pin de la fila superior
+    SIGNAL cini         : std_logic_vector(1 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
+    SIGNAL signoi       : std_logic_vector(1 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
+    SIGNAL operai       : std_logic_vector(1 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
+    SIGNAL couti        : std_logic_vector(1 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
+    SIGNAL resulti      : std_logic_vector(1 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
+
+begin
+
+    ppin: FOR i IN 0 TO 1 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+        pin1(i)<='0';
+    END GENERATE;
+
+    ccin: FOR i IN 0 TO 1 GENERATE  -- Inicialización a 0 de los n cin de la columna derecha
+        cin1(i)<='0';
+    END GENERATE;
+
+    U0: ALU PORT MAP 
+        (ai(0), bi(0), cini(i), signoi(i), operai(i), couti(i), resulti(i));
+
+end Bloque;
