@@ -51,7 +51,7 @@ begin
     BEGIN
 
         if opera="00" then 
-            result <= (ai OR bi) OR cin;
+            result <= (ai XOR bi) XOR cin;
             if (ai and bi)='1' then
                 cout <= '1';
             else

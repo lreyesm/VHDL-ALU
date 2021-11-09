@@ -34,7 +34,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity ALU_N_Bits is
     Port ( 
         a       : IN std_logic_vector(1 downto 0);
-        b       : IN std_logic_vector(1 downto 0)
+        b       : IN std_logic_vector(1 downto 0);
+        o       : OUT std_logic_vector(2 downto 0)
     );
 end ALU_N_Bits;
 
@@ -65,15 +66,26 @@ architecture Bloque of ALU_N_Bits is
 
 begin
 
-    ppin: FOR i IN 0 TO 1 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
-        pin1(i)<='0';
+    xai: FOR i IN 0 TO 1 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+        ai(i)<=a(i);
     END GENERATE;
-
-    ccin: FOR i IN 0 TO 1 GENERATE  -- Inicialización a 0 de los n cin de la columna derecha
-        cin1(i)<='0';
+    xbi: FOR i IN 0 TO 1 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+        bi(i)<=b(i);
+    END GENERATE;
+    xcini: FOR i IN 0 TO 1 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+        cini(i)<='0';
+    END GENERATE;
+    xsignoi: FOR i IN 0 TO 1 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+        signoi(i)<='0';
+    END GENERATE;
+    xoperai: FOR i IN 0 TO 1 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+        operai(i)<='0';
     END GENERATE;
 
     U0: ALU PORT MAP 
-        (ai(0), bi(0), cini(i), signoi(i), operai(i), couti(i), resulti(i));
+        (ai(0), bi(0), '0', signoi(0), operai, couti(0), resulti(0));
+    U1: ALU PORT MAP 
+        (ai(1), bi(1), couti(0), signoi(1), operai, couti(1), resulti(1));
 
+    o <= couti(1) & resulti;
 end Bloque;

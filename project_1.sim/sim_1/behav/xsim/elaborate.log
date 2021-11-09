@@ -11,5 +11,6 @@ Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling architecture circuit of entity xil_defaultlib.ALU [alu_default]
+Compiling architecture bloque of entity xil_defaultlib.ALU_N_Bits [alu_n_bits_default]
 Compiling architecture behavioral of entity xil_defaultlib.nombre_entidad_testbench
 Built simulation snapshot Nombre_Entidad_testbench_behav
