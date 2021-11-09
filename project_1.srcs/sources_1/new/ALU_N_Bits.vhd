@@ -82,10 +82,22 @@ begin
         operai(i)<='0';
     END GENERATE;
 
-    U0: ALU PORT MAP 
-        (ai(0), bi(0), '0', signoi(0), operai, couti(0), resulti(0));
-    U1: ALU PORT MAP 
-        (ai(1), bi(1), couti(0), signoi(1), operai, couti(1), resulti(1));
+
+    ALUs: FOR i IN 0 TO 1 GENERATE
+
+        firstUnit: IF (i=0) GENERATE
+        -- Generación de los elementos de la columna superior
+            U0: ALU PORT MAP
+                (ai(i), bi(i), '0', signoi(i), operai, couti(i), resulti(i));
+        END GENERATE;
+
+        otherUnits: IF (i>0) GENERATE
+            U1: ALU PORT MAP 
+                (ai(i), bi(i), couti(0), signoi(i), operai, couti(i), resulti(i));
+        END GENERATE;
+
+    END GENERATE;
 
     o <= couti(1) & resulti;
+
 end Bloque;

@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir C:/Users/Docencia/Downloads/Vivado Design Flow Intro Lab-20210928/project_1/project_1.sim/sim_1/behav/xsim/xsim.dir/Nombre_Entidad_testbench_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Tue Nov  9 19:00:17 2021" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Tue Nov  9 19:11:34 2021" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2018.3 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "2405991" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "WIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "890d9539-af6a-470e-a0c3-a1a932789806" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "9a3a8e385f4f466fb46088f74cf99e1f" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "31" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "35" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Microsoft Windows 8 or later , 64-bit" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "major release  (build 9200)" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i5-9500 CPU @ 3.00GHz" -context "user_environment"
@@ -36,7 +36,7 @@ webtalk_add_data -client xsim -key Total_Nets -value "0" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Processes -value "14" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Instances -value "7" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Xilinx_HDL_Libraries_Used -value "secureip " -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Time -value "0.42_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Memory -value "39060_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 2651821095 -regid "174123010_174123011_210662615_504" -xml C:/Users/Docencia/Downloads/Vivado Design Flow Intro Lab-20210928/project_1/project_1.sim/sim_1/behav/xsim/xsim.dir/Nombre_Entidad_testbench_behav/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/Docencia/Downloads/Vivado Design Flow Intro Lab-20210928/project_1/project_1.sim/sim_1/behav/xsim/xsim.dir/Nombre_Entidad_testbench_behav/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/Docencia/Downloads/Vivado Design Flow Intro Lab-20210928/project_1/project_1.sim/sim_1/behav/xsim/xsim.dir/Nombre_Entidad_testbench_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key Compiler_Time -value "0.45_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Compiler_Memory -value "39104_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 3357760454 -regid "174123010_174123011_210662615_504" -xml C:/Users/Docencia/Downloads/Vivado Design Flow Intro Lab-20210928/project_1/project_1.sim/sim_1/behav/xsim/xsim.dir/Nombre_Entidad_testbench_behav/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/Docencia/Downloads/Vivado Design Flow Intro Lab-20210928/project_1/project_1.sim/sim_1/behav/xsim/xsim.dir/Nombre_Entidad_testbench_behav/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/Docencia/Downloads/Vivado Design Flow Intro Lab-20210928/project_1/project_1.sim/sim_1/behav/xsim/xsim.dir/Nombre_Entidad_testbench_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate
