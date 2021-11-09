@@ -57,9 +57,10 @@ ARCHITECTURE behavioral OF Nombre_Entidad_testbench IS
     
     COMPONENT ALU_N_Bits is
         Port ( 
-            a       : IN std_logic_vector(1 downto 0);
-            b       : IN std_logic_vector(1 downto 0);
-            o       : OUT std_logic_vector(2 downto 0)
+            a       : IN std_logic_vector(6 downto 0);
+            b       : IN std_logic_vector(6 downto 0);
+            op      : IN std_logic_vector(1 downto 0);
+            o       : OUT std_logic_vector(7 downto 0)
         );
     END COMPONENT; 
     
@@ -71,9 +72,10 @@ ARCHITECTURE behavioral OF Nombre_Entidad_testbench IS
     -- SIGNAL signal_cout_net: STD_LOGIC; 
     -- SIGNAL signal_result_net: STD_LOGIC; 
     
-    SIGNAL signal_a_net: std_logic_vector(1 downto 0); 
-    SIGNAL signal_b_net: std_logic_vector(1 downto 0); 
-    SIGNAL signal_o_net: std_logic_vector(2 downto 0); 
+    SIGNAL signal_a_net: std_logic_vector(6 downto 0); 
+    SIGNAL signal_b_net: std_logic_vector(6 downto 0); 
+    SIGNAL signal_op_net: std_logic_vector(1 downto 0); 
+    SIGNAL signal_o_net: std_logic_vector(7 downto 0); 
 
 BEGIN 
 
@@ -88,30 +90,35 @@ UUT: ALU_N_Bits
 --             cout => signal_cout_net,
 --             result => signal_result_net
 --         ); 
-PORT MAP(   a => signal_a_net, 
-            b => signal_b_net, 
-            o => signal_o_net
+PORT MAP(   a   => signal_a_net, 
+            b   => signal_b_net, 
+            op  => signal_op_net, 
+            o   => signal_o_net
         ); 
 -- ********************************************************************** 
 
 -- ****************************** PROCESS *******************************
 Testbench_Desc_Name: PROCESS 
     BEGIN  
-        signal_a_net <= "11"; 
-        signal_b_net <= "00"; 
+        signal_op_net <= "01"; 
+        signal_a_net <= "0000011"; 
+        signal_b_net <= "0000001"; 
         WAIT FOR 250 NS; 
 
-        signal_a_net <= "11"; 
-        signal_b_net <= "11"; 
+        signal_op_net <= "01"; 
+        signal_a_net <= "0000011"; 
+        signal_b_net <= "0000011"; 
         WAIT FOR 250 NS; 
 
         
-        signal_a_net <= "00"; 
-        signal_b_net <= "11"; 
+        signal_op_net <= "01"; 
+        signal_a_net <= "0000011"; 
+        signal_b_net <= "0000000"; 
         WAIT FOR 250 NS; 
         
-        signal_a_net <= "00"; 
-        signal_b_net <= "00"; 
+        signal_op_net <= "01"; 
+        signal_a_net <= "0000001"; 
+        signal_b_net <= "0000001"; 
         WAIT FOR 250 NS;
 
         WAIT;  

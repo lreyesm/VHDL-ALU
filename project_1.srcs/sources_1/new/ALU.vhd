@@ -54,13 +54,17 @@ begin
             result <= (ai XOR bi) XOR cin;
             if (ai and bi)='1' then
                 cout <= '1';
+            elsif (ai and cin)='1' then
+                cout <= '1';
+            elsif (bi and cin)='1' then
+                cout <= '1';
             else
                 cout <= '0';
             end if;
 
         elsif opera="01" then
             if cin='1' then
-                if (ai OR (not bi))='1' then
+                if (ai XOR (not bi))='1' then
                     result <= '0';
                     cout <= '0';
                 else
@@ -68,7 +72,7 @@ begin
                     cout <= '1';
                 end if; 
             else 
-                result <= ai OR (not bi);
+                result <= ai XOR (not bi);
                 if (ai < bi) then
                     cout <= '1';
                 else 
