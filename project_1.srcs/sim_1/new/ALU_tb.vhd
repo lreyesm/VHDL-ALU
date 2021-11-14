@@ -101,8 +101,8 @@ PORT MAP(   a   => signal_a_net,
 Testbench_Desc_Name: PROCESS 
     BEGIN  
         signal_op_net <= "01"; 
-        signal_a_net <= "0000011"; 
-        signal_b_net <= "0000001"; 
+        signal_a_net <= "1000011"; 
+        signal_b_net <= "1010001"; 
         WAIT FOR 250 NS; 
 
         signal_op_net <= "01"; 
@@ -112,13 +112,13 @@ Testbench_Desc_Name: PROCESS
 
         
         signal_op_net <= "01"; 
-        signal_a_net <= "0000011"; 
-        signal_b_net <= "0000000"; 
+        signal_a_net <= "1111111"; 
+        signal_b_net <= "1100000"; 
         WAIT FOR 250 NS; 
         
         signal_op_net <= "01"; 
-        signal_a_net <= "0000001"; 
-        signal_b_net <= "0000001"; 
+        signal_a_net <= "1000001"; 
+        signal_b_net <= "0011001"; 
         WAIT FOR 250 NS;
 
         WAIT;  

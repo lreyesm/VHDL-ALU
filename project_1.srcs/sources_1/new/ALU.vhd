@@ -63,28 +63,27 @@ begin
             end if;
 
         elsif opera="01" then
-            if cin='1' then
-                if (ai XOR (not bi))='1' then
-                    result <= '0';
-                    cout <= '0';
-                else
-                    result <= '1';
-                    cout <= '1';
-                end if; 
-            else 
-                result <= ai XOR (not bi);
-                if (ai < bi) then
-                    cout <= '1';
-                else 
-                    cout <= '0';
-                end if;              
+            result <= (ai XOR bi) XOR cin;
+            if (((not ai) and bi) OR cin)='1' then
+                cout <= '1';
+            else
+                cout <= '0';
             end if;
 
         elsif opera="10" then
-            result <= ai OR (not bi);
+            if signo='1' then
+                result <= ai;
+            else
+                result <= bi;
+            end if;
+                
 
         elsif opera="11" then
-            result <= ai OR (not bi);
+            if signo='1' then
+                result <= bi;
+            else
+                result <= ai;
+            end if;
         end if;
 
     END PROCESS;

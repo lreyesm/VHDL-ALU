@@ -60,7 +60,7 @@ architecture Bloque of ALU_N_Bits is
     SIGNAL ai           : std_logic_vector(6 DOWNTO 0); -- Vector de m bits para contener los pin de la fila superior
     SIGNAL bi           : std_logic_vector(6 DOWNTO 0); -- Vector de m bits para contener los pin de la fila superior
     SIGNAL cini         : std_logic_vector(6 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
-    SIGNAL signoi       : std_logic_vector(6 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
+    SIGNAL signoi       : std_logic; -- Vector de n bits para contener los cin de la columna derecha
     SIGNAL operai       : std_logic_vector(1 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
     SIGNAL couti        : std_logic_vector(6 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
     SIGNAL resulti      : std_logic_vector(6 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
@@ -76,28 +76,28 @@ begin
         cini(i) <='0';
     END GENERATE;
     xsignoi: FOR i IN 0 TO 6 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
-        signoi(i) <='0';
+        signoi <= '1' when (a >= b) else '0';
     END GENERATE;
     xoperai: FOR i IN 0 TO 1 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
         operai(i) <= op(i);
     END GENERATE;
 
 
-    ALUs: FOR i IN 0 TO 6 GENERATE
+    ALUs: FOR i IN 0 TO 7 GENERATE
 
         firstUnit: IF (i=0) GENERATE
         -- Generación de los elementos de la columna superior
             U0: ALU PORT MAP
-                (ai(i), bi(i), '0', signoi(i), operai, couti(i), resulti(i));
+                (ai(i), bi(i), '0', signoi, operai, couti(i), resulti(i));
         END GENERATE;
 
-        otherUnitsI: IF (i>0) GENERATE
+        otherUnitsI: IF (i>0 and i<7 ) GENERATE
             UI: ALU PORT MAP 
-                (ai(i), bi(i), couti(i - 1), signoi(i), operai, couti(i), resulti(i));
+                (ai(i), bi(i), couti(i - 1), signoi, operai, couti(i), resulti(i));
         END GENERATE;
 
     END GENERATE;
 
-    o <= couti(6) & resulti;
+    o <= (((couti(6) AND (not operai(0))) OR ((not signoi) AND operai(0))) AND (not operai(1))) & resulti;
 
 end Bloque;
