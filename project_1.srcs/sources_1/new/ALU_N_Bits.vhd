@@ -33,14 +33,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity ALU_N_Bits is
     Port ( 
-        a       : IN std_logic_vector(6 downto 0);
-        b       : IN std_logic_vector(6 downto 0);
+        a       : IN std_logic_vector(3 downto 0);
+        b       : IN std_logic_vector(3 downto 0);
         op      : IN std_logic_vector(1 downto 0);
         o       : OUT std_logic_vector(7 downto 0)
     );
 end ALU_N_Bits;
 
-architecture Bloque of ALU_N_Bits is
+architecture bloque of ALU_N_Bits is
 
     COMPONENT ALU is
         Port ( 
@@ -66,12 +66,20 @@ architecture Bloque of ALU_N_Bits is
     SIGNAL resulti      : std_logic_vector(6 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
 
 begin
-    xai: FOR i IN 0 TO 6 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
-        ai(i) <= a(i);
+    xai: FOR i IN 0 TO 3 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+        ai(i + 3) <= a(i);
     END GENERATE;
-    xbi: FOR i IN 0 TO 6 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
-        bi(i) <= b(i);
+    xai2: FOR i IN 0 TO 2 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+        ai(i) <= '0';
     END GENERATE;
+    
+    xbi: FOR i IN 0 TO 3 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+        bi(i + 3) <= b(i);
+    END GENERATE;
+    xbi2: FOR i IN 0 TO 2 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+        bi(i) <= '0';
+    END GENERATE;
+    
     xcini: FOR i IN 0 TO 6 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
         cini(i) <='0';
     END GENERATE;
@@ -100,4 +108,4 @@ begin
 
     o <= (((couti(6) AND (not operai(0))) OR ((not signoi) AND operai(0))) AND (not operai(1))) & resulti;
 
-end Bloque;
+end bloque;

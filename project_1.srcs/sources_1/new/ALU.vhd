@@ -71,6 +71,7 @@ begin
             end if;
 
         elsif opera="10" then
+            cout <= '0';
             if signo='1' then
                 result <= ai;
             else
@@ -79,11 +80,16 @@ begin
                 
 
         elsif opera="11" then
+            cout <= '0';
             if signo='1' then
                 result <= bi;
             else
                 result <= ai;
             end if;
+            
+        else
+            cout <= '0';
+            result <= '0';
         end if;
 
     END PROCESS;
