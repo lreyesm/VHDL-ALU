@@ -37,23 +37,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 
 -- *************************** Entity name ********************************* 
-ENTITY Nombre_Entidad_testbench IS 
-END Nombre_Entidad_testbench; 
+ENTITY ALU_N_Bits_testbench IS 
+END ALU_N_Bits_testbench; 
 -- ************************************************************************* 
 
-ARCHITECTURE behavioral OF Nombre_Entidad_testbench IS  
-    
-    -- COMPONENT ALU is
-    --     Port ( 
-    --         ai          : IN std_logic;
-    --         bi          : IN std_logic;
-    --         cin         : IN std_logic;
-    --         signo       : IN std_logic;
-    --         opera       : IN std_logic_vector(1 downto 0);
-    --         cout        : OUT std_logic;
-    --         result      : OUT std_logic
-    --     );
-    -- END COMPONENT;  
+ARCHITECTURE behavioral OF ALU_N_Bits_testbench IS  
     
     COMPONENT ALU_N_Bits is
         Port ( 
@@ -62,15 +50,7 @@ ARCHITECTURE behavioral OF Nombre_Entidad_testbench IS
             op      : IN std_logic_vector(1 downto 0);
             o       : OUT std_logic_vector(7 downto 0)
         );
-    END COMPONENT; 
-    
-    -- SIGNAL signal_ai_net: STD_LOGIC; 
-    -- SIGNAL signal_bi_net: STD_LOGIC; 
-    -- SIGNAL signal_cin_net: STD_LOGIC; 
-    -- SIGNAL signal_signo_net: STD_LOGIC; 
-    -- SIGNAL signal_opera_net: std_logic_vector(1 downto 0); 
-    -- SIGNAL signal_cout_net: STD_LOGIC; 
-    -- SIGNAL signal_result_net: STD_LOGIC; 
+    END COMPONENT;  
     
     SIGNAL signal_a_net: std_logic_vector(6 downto 0); 
     SIGNAL signal_b_net: std_logic_vector(6 downto 0); 
@@ -82,14 +62,6 @@ BEGIN
 -- UUT: ALU  
 UUT: ALU_N_Bits
 -- ****************************** MAPPING *******************************
--- PORT MAP(   ai => signal_ai_net, 
---             bi => signal_bi_net, 
---             cin => signal_cin_net,
---             signo => signal_signo_net,
---             opera => signal_opera_net,
---             cout => signal_cout_net,
---             result => signal_result_net
---         ); 
 PORT MAP(   a   => signal_a_net, 
             b   => signal_b_net, 
             op  => signal_op_net, 
@@ -100,16 +72,38 @@ PORT MAP(   a   => signal_a_net,
 -- ****************************** PROCESS *******************************
 Testbench_Desc_Name: PROCESS 
     BEGIN  
-        signal_op_net <= "01"; 
+        -- ****************************** SUM *******************************
+        signal_op_net <= "00"; 
         signal_a_net <= "1000011"; 
         signal_b_net <= "1010001"; 
+        WAIT FOR 250 NS; 
+
+        signal_op_net <= "00"; 
+        signal_a_net <= "0000011"; 
+        signal_b_net <= "0000011"; 
+        WAIT FOR 250 NS; 
+        
+        signal_op_net <= "00"; 
+        signal_a_net <= "1111111"; 
+        signal_b_net <= "1100000"; 
+        WAIT FOR 250 NS; 
+        
+        signal_op_net <= "00"; 
+        signal_a_net <= "1000001"; 
+        signal_b_net <= "0011001"; 
+        WAIT FOR 250 NS;
+        -- ****************************** SUM *******************************
+        
+        -- ****************************** SUBSTRACTION *******************************
+        signal_op_net <= "01"; 
+        signal_a_net <= "1000011"; 
+        signal_b_net <= "0010001"; 
         WAIT FOR 250 NS; 
 
         signal_op_net <= "01"; 
         signal_a_net <= "0000011"; 
         signal_b_net <= "0000011"; 
         WAIT FOR 250 NS; 
-
         
         signal_op_net <= "01"; 
         signal_a_net <= "1111111"; 
@@ -120,42 +114,58 @@ Testbench_Desc_Name: PROCESS
         signal_a_net <= "1000001"; 
         signal_b_net <= "0011001"; 
         WAIT FOR 250 NS;
+        -- ****************************** SUBSTRACTION *******************************
+        
+        -- ****************************** MAXIMUM *******************************
+        signal_op_net <= "10"; 
+        signal_a_net <= "1000011"; 
+        signal_b_net <= "1010001"; 
+        WAIT FOR 250 NS; 
+
+        signal_op_net <= "10"; 
+        signal_a_net <= "0000011"; 
+        signal_b_net <= "0000011"; 
+        WAIT FOR 250 NS; 
+        
+        signal_op_net <= "10"; 
+        signal_a_net <= "1111111"; 
+        signal_b_net <= "1100000"; 
+        WAIT FOR 250 NS; 
+        
+        signal_op_net <= "10"; 
+        signal_a_net <= "1000001"; 
+        signal_b_net <= "0011001"; 
+        WAIT FOR 250 NS;
+        -- ****************************** MAXIMUM *******************************
+        
+        -- ****************************** MINIMUN *******************************
+        signal_op_net <= "11"; 
+        signal_a_net <= "1000011"; 
+        signal_b_net <= "1010001"; 
+        WAIT FOR 250 NS; 
+
+        signal_op_net <= "11"; 
+        signal_a_net <= "0000011"; 
+        signal_b_net <= "0000011"; 
+        WAIT FOR 250 NS; 
+
+        signal_op_net <= "11"; 
+        signal_a_net <= "1111111"; 
+        signal_b_net <= "1100000"; 
+        WAIT FOR 250 NS; 
+        
+        signal_op_net <= "11"; 
+        signal_a_net <= "1000001"; 
+        signal_b_net <= "0011001"; 
+        WAIT FOR 250 NS;
+        
+        signal_op_net <= "11"; 
+        signal_a_net <= "1000001"; 
+        signal_b_net <= "0011001"; 
+        WAIT FOR 250 NS;
+        -- ****************************** MINIMUN *******************************
 
         WAIT;  
     END PROCESS; 
 END; 
--- Testbench_Desc_Name: PROCESS 
---     BEGIN  
---         signal_ai_net <= '1'; 
---         signal_bi_net <= '0'; 
---         signal_cin_net <= '0'; 
---         signal_signo_net <= '0';
---         signal_opera_net <= "01"; 
---         WAIT FOR 250 NS; 
-
---         signal_ai_net <= '1'; 
---         signal_bi_net <= '1'; 
---         signal_cin_net <= '0';
---         signal_signo_net <= '0';
---         signal_opera_net <= "01";
---         WAIT FOR 250 NS; 
-
-        
---         signal_ai_net <= '0'; 
---         signal_bi_net <= '1'; 
---         signal_cin_net <= '0';
---         signal_signo_net <= '0';
---         signal_opera_net <= "11";
---         WAIT FOR 250 NS; 
-        
---         signal_ai_net <= '0'; 
---         signal_bi_net <= '0'; 
---         signal_cin_net <= '0';
---         signal_signo_net <= '0';
---         signal_opera_net <= "00";
---         WAIT FOR 250 NS;
-
---         WAIT;  
---     END PROCESS; 
--- END; 
 -- ******************************************************************

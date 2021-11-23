@@ -40,7 +40,7 @@ entity ALU_N_Bits is
     );
 end ALU_N_Bits;
 
-architecture Bloque of ALU_N_Bits is
+architecture bloque of ALU_N_Bits is
 
     COMPONENT ALU is
         Port ( 
@@ -68,10 +68,10 @@ architecture Bloque of ALU_N_Bits is
 begin
     xai: FOR i IN 0 TO 6 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
         ai(i) <= a(i);
-    END GENERATE;
+    END GENERATE;    
     xbi: FOR i IN 0 TO 6 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
         bi(i) <= b(i);
-    END GENERATE;
+    END GENERATE;    
     xcini: FOR i IN 0 TO 6 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
         cini(i) <='0';
     END GENERATE;
@@ -100,4 +100,4 @@ begin
 
     o <= (((couti(6) AND (not operai(0))) OR ((not signoi) AND operai(0))) AND (not operai(1))) & resulti;
 
-end Bloque;
+end bloque;
