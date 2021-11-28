@@ -54,31 +54,28 @@ architecture bloque of ALU_N_Bits is
         );
     END COMPONENT; 
 
-    -- TYPE matriz IS ARRAY(0 TO 1, 0 TO 1) OF BIT;
-
-    -- SIGNAL a, b : matriz;                   -- Matrices que contendrán los resultados de los bloques de 1 bit
-    SIGNAL ai           : std_logic_vector(6 DOWNTO 0); -- Vector de m bits para contener los pin de la fila superior
-    SIGNAL bi           : std_logic_vector(6 DOWNTO 0); -- Vector de m bits para contener los pin de la fila superior
-    SIGNAL cini         : std_logic_vector(6 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
-    SIGNAL signoi       : std_logic; -- Vector de n bits para contener los cin de la columna derecha
-    SIGNAL operai       : std_logic_vector(1 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
-    SIGNAL couti        : std_logic_vector(6 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
-    SIGNAL resulti      : std_logic_vector(6 DOWNTO 0); -- Vector de n bits para contener los cin de la columna derecha
+    SIGNAL ai           : std_logic_vector(6 DOWNTO 0);
+    SIGNAL bi           : std_logic_vector(6 DOWNTO 0);
+    SIGNAL cini         : std_logic_vector(6 DOWNTO 0);
+    SIGNAL signoi       : std_logic;-- Vector de n bit
+    SIGNAL operai       : std_logic_vector(1 DOWNTO 0);
+    SIGNAL couti        : std_logic_vector(6 DOWNTO 0);
+    SIGNAL resulti      : std_logic_vector(6 DOWNTO 0);
 
 begin
-    xai: FOR i IN 0 TO 6 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+    xai: FOR i IN 0 TO 6 GENERATE   
         ai(i) <= a(i);
     END GENERATE;    
-    xbi: FOR i IN 0 TO 6 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+    xbi: FOR i IN 0 TO 6 GENERATE   
         bi(i) <= b(i);
     END GENERATE;    
-    xcini: FOR i IN 0 TO 6 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+    xcini: FOR i IN 0 TO 6 GENERATE   
         cini(i) <='0';
     END GENERATE;
-    xsignoi: FOR i IN 0 TO 6 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+    xsignoi: FOR i IN 0 TO 6 GENERATE   
         signoi <= '1' when (a >= b) else '0';
     END GENERATE;
-    xoperai: FOR i IN 0 TO 1 GENERATE   -- Inicialización a 0 de los m pin de la fila superior
+    xoperai: FOR i IN 0 TO 1 GENERATE   
         operai(i) <= op(i);
     END GENERATE;
 

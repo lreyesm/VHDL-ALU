@@ -59,7 +59,6 @@ ARCHITECTURE behavioral OF ALU_N_Bits_testbench IS
 
 BEGIN 
 
--- UUT: ALU  
 UUT: ALU_N_Bits
 -- ****************************** MAPPING *******************************
 PORT MAP(   a   => signal_a_net, 
