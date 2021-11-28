@@ -45,8 +45,8 @@ ARCHITECTURE behavioral OF ALU_N_Bits_testbench IS
     
     COMPONENT ALU_N_Bits is
         Port ( 
-            a       : IN std_logic_vector(6 downto 0);
-            b       : IN std_logic_vector(6 downto 0);
+            a       : IN std_logic_vector(3 downto 0);
+            b       : IN std_logic_vector(3 downto 0);
             op      : IN std_logic_vector(1 downto 0);
             o       : OUT std_logic_vector(7 downto 0)
         );
